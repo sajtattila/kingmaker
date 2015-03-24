@@ -1,4 +1,4 @@
-package org.glytch.kingmaker.Kingmaker;
+package org.glytch.kingmaker.kingmaker;
 
 /**
  * The Class App.
