@@ -11,14 +11,26 @@ import org.junit.Test;
 public class DiceTestCase {
 
 	/** The number dice roll. */
-	private int numberDiceRoll;
+	private int numberOfRolls;
 
 	/**
 	 * Inits the.
 	 */
 	@Before
 	public void init() {
-		numberDiceRoll = 100000;
+		numberOfRolls = 1000;
+	}
+
+	/**
+	 * Test dice1000.
+	 */
+	@Test
+	public void testDice1000() {
+		int roll;
+		for (int i = 0; i < numberOfRolls * 1000; i++) {
+			roll = Dice.roll(1000);
+			Assert.assertFalse(roll < 1 || roll > 1000);
+		}
 	}
 
 	/**
@@ -28,13 +40,10 @@ public class DiceTestCase {
 	public void testDice100() {
 		int roll;
 		boolean ok = true;
-		for (int i = 0; i < numberDiceRoll; i++) {
-			roll = Dice.dice100();
-			if (roll < 1 || roll > 100) {
-				ok = false;
-			}
+		for (int i = 0; i < numberOfRolls * 100 && ok; i++) {
+			roll = Dice.roll(100);
+			Assert.assertFalse(roll < 1 || roll > 100);
 		}
-		Assert.assertTrue(ok);
 	}
 
 	/**
@@ -44,13 +53,10 @@ public class DiceTestCase {
 	public void testDice20() {
 		int roll;
 		boolean ok = true;
-		for (int i = 0; i < numberDiceRoll; i++) {
-			roll = Dice.dice20();
-			if (roll < 1 || roll > 20) {
-				ok = false;
-			}
+		for (int i = 0; i < numberOfRolls && ok; i++) {
+			roll = Dice.roll(20);
+			Assert.assertFalse(roll < 1 || roll > 20);
 		}
-		Assert.assertTrue(ok);
 	}
 
 	/**
@@ -60,13 +66,10 @@ public class DiceTestCase {
 	public void testDice12() {
 		int roll;
 		boolean ok = true;
-		for (int i = 0; i < numberDiceRoll; i++) {
-			roll = Dice.dice12();
-			if (roll < 1 || roll > 12) {
-				ok = false;
-			}
+		for (int i = 0; i < numberOfRolls && ok; i++) {
+			roll = Dice.roll(12);
+			Assert.assertFalse(roll < 1 || roll > 12);
 		}
-		Assert.assertTrue(ok);
 	}
 
 	/**
@@ -76,13 +79,10 @@ public class DiceTestCase {
 	public void testDice10() {
 		int roll;
 		boolean ok = true;
-		for (int i = 0; i < numberDiceRoll; i++) {
-			roll = Dice.dice10();
-			if (roll < 1 || roll > 10) {
-				ok = false;
-			}
+		for (int i = 0; i < numberOfRolls && ok; i++) {
+			roll = Dice.roll(10);
+			Assert.assertFalse(roll < 1 || roll > 10);
 		}
-		Assert.assertTrue(ok);
 	}
 
 	/**
@@ -92,13 +92,10 @@ public class DiceTestCase {
 	public void testDice8() {
 		int roll;
 		boolean ok = true;
-		for (int i = 0; i < numberDiceRoll; i++) {
-			roll = Dice.dice8();
-			if (roll < 1 || roll > 8) {
-				ok = false;
-			}
+		for (int i = 0; i < numberOfRolls && ok; i++) {
+			roll = Dice.roll(8);
+			Assert.assertFalse(roll < 1 || roll > 8);
 		}
-		Assert.assertTrue(ok);
 	}
 
 	/**
@@ -108,13 +105,10 @@ public class DiceTestCase {
 	public void testDice6() {
 		int roll;
 		boolean ok = true;
-		for (int i = 0; i < numberDiceRoll; i++) {
-			roll = Dice.dice6();
-			if (roll < 1 || roll > 6) {
-				ok = false;
-			}
+		for (int i = 0; i < numberOfRolls && ok; i++) {
+			roll = Dice.roll(6);
+			Assert.assertFalse(roll < 1 || roll > 6);
 		}
-		Assert.assertTrue(ok);
 	}
 
 	/**
@@ -124,13 +118,10 @@ public class DiceTestCase {
 	public void testDice4() {
 		int roll;
 		boolean ok = true;
-		for (int i = 0; i < numberDiceRoll; i++) {
-			roll = Dice.dice4();
-			if (roll < 1 || roll > 4) {
-				ok = false;
-			}
+		for (int i = 0; i < numberOfRolls && ok; i++) {
+			roll = Dice.roll(4);
+			Assert.assertFalse(roll < 1 || roll > 4);
 		}
-		Assert.assertTrue(ok);
 	}
 
 	/**
@@ -140,13 +131,10 @@ public class DiceTestCase {
 	public void testDice3() {
 		int roll;
 		boolean ok = true;
-		for (int i = 0; i < numberDiceRoll; i++) {
-			roll = Dice.dice3();
-			if (roll < 1 || roll > 3) {
-				ok = false;
-			}
+		for (int i = 0; i < numberOfRolls && ok; i++) {
+			roll = Dice.roll(3);
+			Assert.assertFalse(roll < 1 || roll > 3);
 		}
-		Assert.assertTrue(ok);
 	}
 
 	/**
@@ -156,13 +144,9 @@ public class DiceTestCase {
 	public void testDice2() {
 		int roll;
 		boolean ok = true;
-		for (int i = 0; i < numberDiceRoll; i++) {
-			roll = Dice.dice2();
-			if (roll < 1 || roll > 2) {
-				ok = false;
-			}
+		for (int i = 0; i < numberOfRolls && ok; i++) {
+			roll = Dice.roll(2);
+			Assert.assertFalse(roll < 1 || roll > 2);
 		}
-		Assert.assertTrue(ok);
 	}
-
 }

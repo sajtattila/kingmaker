@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.glytch.kingmaker.model.Leader;
 import org.glytch.kingmaker.model.util.KingdomAttributes;
-import org.junit.After;
+import org.glytch.kingmaker.model.util.LeadershipRoles;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,15 +15,16 @@ import org.junit.Test;
  */
 public class LeaderTestCase {
 
-	/** The leaders. */
 	private List<Leader> leaders;
+	private Leader amiri;
 
 	/**
-	 * Inits the.
+	 * Inits the leaders.
 	 */
 	@Before
 	public void init() {
 		leaders = new ArrayList<Leader>();
+		amiri = new Leader("", null, 0, 0, 0, 0, 0, 0);
 	}
 
 	/**
@@ -45,6 +46,8 @@ public class LeaderTestCase {
 		leaders.add(new Leader("Harsk", null, 3, 2, 1, 0, -1, -2));
 		leaders.add(new Leader("Mérisiel", null, 18, 17, 16, 15, 14, 13));
 		leaders.add(new Leader("Hayato", null, -5, 1500, -1500, 3, 5, 0));
+
+		Assert.assertFalse(leaders.isEmpty());
 	}
 
 	/**
@@ -52,7 +55,6 @@ public class LeaderTestCase {
 	 */
 	@Test
 	public void testKingdomAttributes() {
-		Leader amiri = new Leader("Amiri", null, 18, 17, 16, 15, 14, 10);
 		List<KingdomAttributes> attributes = new ArrayList<KingdomAttributes>();
 		attributes.add(KingdomAttributes.Economy);
 		amiri.setAttributes(attributes);
@@ -61,21 +63,74 @@ public class LeaderTestCase {
 	}
 
 	/**
-	 * Tear down.
+	 * Test name.
 	 */
-	@After
-	public void tearDown() {
-		/*
-		 * for (Leader leader : leaders) { System.out.println(leader);
-		 * System.out.println("STR: " + leader.getSTR() + "(" +
-		 * leader.getBonusSTR() + ")"); System.out.println("DEX: " +
-		 * leader.getDEX() + "(" + leader.getBonusDEX() + ")");
-		 * System.out.println("CON: " + leader.getCON() + "(" +
-		 * leader.getBonusCON() + ")"); System.out.println("INT: " +
-		 * leader.getINT() + "(" + leader.getBonusINT() + ")");
-		 * System.out.println("WIS: " + leader.getWIS() + "(" +
-		 * leader.getBonusWIS() + ")"); System.out.println("CHA: " +
-		 * leader.getCHA() + "(" + leader.getBonusCHA() + ")"); }
-		 */
+	@Test
+	public void testName() {
+		amiri.setName("Amiri");
+		Assert.assertTrue(amiri.getName().equals("Amiri"));
+	}
+
+	/**
+	 * Test str.
+	 */
+	@Test
+	public void testSTR() {
+		amiri.setSTR(18);
+		Assert.assertTrue(amiri.getSTR() == 18 && amiri.getBonusSTR() == 4);
+	}
+
+	/**
+	 * Test dex.
+	 */
+	@Test
+	public void testDEX() {
+		amiri.setDEX(21);
+		Assert.assertTrue(amiri.getDEX() == 21 && amiri.getBonusDEX() == 5);
+	}
+
+	/**
+	 * Test con.
+	 */
+	@Test
+	public void testCON() {
+		amiri.setCON(16);
+		Assert.assertTrue(amiri.getCON() == 16 && amiri.getBonusCON() == 3);
+	}
+
+	/**
+	 * Test int.
+	 */
+	@Test
+	public void testINT() {
+		amiri.setINT(15);
+		Assert.assertTrue(amiri.getINT() == 15 && amiri.getBonusINT() == 2);
+	}
+
+	/**
+	 * Test wis.
+	 */
+	@Test
+	public void testWIS() {
+		amiri.setWIS(12);
+		Assert.assertTrue(amiri.getWIS() == 12 && amiri.getBonusWIS() == 1);
+	}
+
+	/**
+	 * Test cha.
+	 */
+	@Test
+	public void testCHA() {
+		amiri.setCHA(10);
+		Assert.assertTrue(amiri.getCHA() == 10 && amiri.getBonusCHA() == 0);
+	}
+
+	/**
+	 * Test role.
+	 */
+	@Test
+	public void testRole() {
+		amiri.setRole(LeadershipRoles.Ruler);
+		Assert.assertTrue(amiri.getRole().equals(LeadershipRoles.Ruler));
 	}
 }

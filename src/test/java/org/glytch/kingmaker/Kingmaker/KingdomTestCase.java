@@ -15,6 +15,7 @@ public class KingdomTestCase {
 
 	/** The kingdom. */
 	private Kingdom kingdom;
+	private Kingdom kingdom2;
 
 	/**
 	 * Inits the.
@@ -22,6 +23,8 @@ public class KingdomTestCase {
 	@Before
 	public void init() {
 		kingdom = new Kingdom("My Kingdom");
+		kingdom2 = new Kingdom("My second kingdom");
+		kingdom2.setAlignment(Alignment.LAWFUL_GOOD);
 	}
 
 	/**
@@ -245,7 +248,7 @@ public class KingdomTestCase {
 			if (kingdom.economyTest())
 				testSucceed++;
 		}
-		Assert.assertTrue(testSucceed > 1);
+		Assert.assertTrue(testSucceed > 30 && testSucceed < 970);
 	}
 
 	/**
@@ -258,7 +261,7 @@ public class KingdomTestCase {
 			if (kingdom.loyaltyTest())
 				testSucceed++;
 		}
-		Assert.assertTrue(testSucceed > 1);
+		Assert.assertTrue(testSucceed > 30 && testSucceed < 970);
 	}
 
 	/**
@@ -271,6 +274,95 @@ public class KingdomTestCase {
 			if (kingdom.stabilityTest())
 				testSucceed++;
 		}
-		Assert.assertTrue(testSucceed > 1);
+		Assert.assertTrue(testSucceed > 30 && testSucceed < 970);
+	}
+
+	@Test
+	public void testAddStability() {
+		kingdom2.addStability(5);
+		Assert.assertTrue(kingdom2.getStability() == 5);
+	}
+
+	@Test
+	public void testAddEconomy() {
+		kingdom2.addEconomy(10);
+		Assert.assertTrue(kingdom2.getEconomy() == 12);
+	}
+
+	@Test
+	public void testAddLoyalty() {
+		kingdom2.addLoyalty(7);
+		Assert.assertTrue(kingdom2.getLoyalty() == 9);
+	}
+
+	@Test
+	public void testAddPopulation() {
+		kingdom2.addPopulation(5000);
+		Assert.assertTrue(kingdom2.getPopulation() == 5000);
+	}
+
+	@Test
+	public void testAddConsumption() {
+		kingdom2.setConsumption(5);
+		Assert.assertTrue(kingdom2.getConsumption() == 5);
+	}
+
+	@Test
+	public void testTreasury() {
+		kingdom2.addTreasury(10000);
+		kingdom2.addTreasury(-5000);
+		Assert.assertTrue(kingdom2.getTreasury() == 5000);
+	}
+
+	@Test
+	public void testTurn() {
+		int turn = 0;
+		for (int i = 0; i < 20; i++) {
+			kingdom2.addTurn();
+			turn++;
+		}
+		Assert.assertTrue(kingdom2.getTurn() == turn);
+	}
+
+	@Test
+	public void testAddUnrest() {
+		kingdom2.addUnrest(10);
+		Assert.assertTrue(kingdom2.getUnrest() == 10);
+	}
+
+	@Test
+	public void testAddUnrestNegativeValue() {
+		kingdom2.addUnrest(10);
+		kingdom2.addUnrest(-20);
+		Assert.assertTrue(kingdom2.getUnrest() == 0);
+	}
+
+	@Test
+	public void testAddUnrestSoAnarchy() {
+		kingdom2.addUnrest(21);
+		Assert.assertTrue(kingdom2.isAnarchy());
+		kingdom2.addUnrest(-50);
+		kingdom2.setAnarchy(false);
+	}
+
+	@Test
+	public void testAddSize() {
+		kingdom2.addSize(10);
+		Assert.assertTrue(kingdom2.getSize() == 11);
+		kingdom.addSize(-10);
+	}
+
+	@Test
+	public void testAddSizeToAugmentControlDC() {
+		kingdom2.addSize(10);
+		Assert.assertTrue(kingdom2.getControlDC() == 31);
+		kingdom.addSize(-10);
+	}
+
+	@Test
+	public void testControlDC() {
+		kingdom2.setControlDC(10);
+		Assert.assertTrue(kingdom2.getControlDC() == 10);
+		kingdom2.setControlDC(21);
 	}
 }

@@ -31,7 +31,7 @@ public class Kingdom {
 	private int unrest = 0;
 	private boolean anarchy = false;
 	private Map<LeadershipRoles, Leader> leaders;
-	private Map<Square, Hex> territories;
+	private Map<Square, Hex> hexes;
 
 	/**
 	 * Instantiates a new kingdom.
@@ -65,45 +65,48 @@ public class Kingdom {
 	}
 
 	/**
-	 * Economy test.
+	 * Economy test under controlDC. Roll dice 20, a natural 1 is a fail, a
+	 * natural 20 is a pass
 	 *
 	 * @return true, if successful
 	 */
 	public boolean economyTest() {
-		int dice = Dice.dice20();
-		if (anarchy)
+		int roll = Dice.roll(20);
+		if (anarchy || roll == 1)
 			return false;
-		if (dice == 20 || dice + economy >= controlDC) {
+		if (roll == 20 || roll + economy >= controlDC) {
 			return true;
 		} else
 			return false;
 	}
 
 	/**
-	 * Loyalty test.
+	 * Loyalty test under controlDC. Roll dice 20, a natural 1 is a fail, a
+	 * natural 20 is a pass
 	 *
 	 * @return true, if successful
 	 */
 	public boolean loyaltyTest() {
-		int dice = Dice.dice20();
-		if (anarchy)
+		int roll = Dice.roll(20);
+		if (anarchy || roll == 1)
 			return false;
-		if (dice == 20 || dice + loyalty >= controlDC) {
+		if (roll == 20 || roll + loyalty >= controlDC) {
 			return true;
 		} else
 			return false;
 	}
 
 	/**
-	 * Stability test.
+	 * Stability test under controlDC. Roll dice 20, a natural 1 is a fail, a
+	 * natural 20 is a pass
 	 *
 	 * @return true, if successful
 	 */
 	public boolean stabilityTest() {
-		int dice = Dice.dice20();
-		if (anarchy)
+		int roll = Dice.roll(20);
+		if (anarchy || roll == 1)
 			return false;
-		if (dice == 20 || dice + stability >= controlDC) {
+		if (roll == 20 || roll + stability >= controlDC) {
 			return true;
 		} else
 			return false;
@@ -359,12 +362,13 @@ public class Kingdom {
 	}
 
 	/**
-	 * Adds the size.
+	 * Adds the size. Augmenting size augments controlDC
 	 *
 	 * @param size the size
 	 */
 	public void addSize(int size) {
 		this.size += size;
+		controlDC += size;
 	}
 
 	/**
@@ -419,6 +423,9 @@ public class Kingdom {
 		this.unrest += unrest;
 		if (this.unrest < 0)
 			this.unrest = 0;
+		if (this.unrest >= 20) {
+			this.anarchy = true;
+		}
 	}
 
 	/**
@@ -453,8 +460,8 @@ public class Kingdom {
 	 *
 	 * @return the territories
 	 */
-	public Map<Square, Hex> getTerritories() {
-		return territories;
+	public Map<Square, Hex> getHexes() {
+		return hexes;
 	}
 
 	/**
@@ -462,8 +469,8 @@ public class Kingdom {
 	 *
 	 * @param territories the territories
 	 */
-	public void setTerritories(Map<Square, Hex> territories) {
-		this.territories = territories;
+	public void setHexes(Map<Square, Hex> hexes) {
+		this.hexes = hexes;
 	}
 
 	/*
