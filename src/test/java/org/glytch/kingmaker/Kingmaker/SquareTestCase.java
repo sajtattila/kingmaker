@@ -8,17 +8,24 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @author Matthieu
+ * The Class SquareTestCase.
  *
+ * @author Matthieu
  */
 public class SquareTestCase {
 
+	/**
+	 * Test constructor.
+	 */
 	@Test
 	public void testConstructor() {
 		Square square = new Square('A', 1);
 		Assert.assertTrue(square != null);
 	}
 
+	/**
+	 * Test letter.
+	 */
 	@Test
 	public void testLetter() {
 		Square square = new Square('A', 1);
@@ -26,6 +33,9 @@ public class SquareTestCase {
 		Assert.assertTrue(square.getLetter() == 'B');
 	}
 
+	/**
+	 * Test number.
+	 */
 	@Test
 	public void testNumber() {
 		Square square = new Square('A', 1);

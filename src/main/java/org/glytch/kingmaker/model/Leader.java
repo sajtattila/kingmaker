@@ -3,7 +3,7 @@
  */
 package org.glytch.kingmaker.model;
 
-import java.util.List;
+import java.util.Map;
 
 import org.glytch.kingmaker.model.util.KingdomAttributes;
 import org.glytch.kingmaker.model.util.LeadershipRoles;
@@ -15,7 +15,7 @@ public class Leader {
 
 	private String name;
 	private LeadershipRoles role;
-	private List<KingdomAttributes> attributes;
+	private Map<KingdomAttributes, Integer> attributes;
 	private int STR;
 	private int DEX;
 	private int CON;
@@ -304,7 +304,7 @@ public class Leader {
 	 *
 	 * @return the attributes
 	 */
-	public List<KingdomAttributes> getAttributes() {
+	public Map<KingdomAttributes, Integer> getAttributes() {
 		return attributes;
 	}
 
@@ -313,7 +313,7 @@ public class Leader {
 	 *
 	 * @param attributes the new attributes
 	 */
-	public void setAttributes(List<KingdomAttributes> attributes) {
+	public void setAttributes(Map<KingdomAttributes, Integer> attributes) {
 		this.attributes = attributes;
 	}
 

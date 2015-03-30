@@ -1,8 +1,12 @@
 package org.glytch.kingmaker.Kingmaker;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.glytch.kingmaker.model.Kingdom;
 import org.glytch.kingmaker.model.Leader;
 import org.glytch.kingmaker.model.util.Alignment;
+import org.glytch.kingmaker.model.util.KingdomAttributes;
 import org.glytch.kingmaker.model.util.LeadershipRoles;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,9 +17,7 @@ import org.junit.Test;
  */
 public class KingdomTestCase {
 
-	/** The kingdom. */
 	private Kingdom kingdom;
-	private Kingdom kingdom2;
 
 	/**
 	 * Inits the.
@@ -23,8 +25,6 @@ public class KingdomTestCase {
 	@Before
 	public void init() {
 		kingdom = new Kingdom("My Kingdom");
-		kingdom2 = new Kingdom("My second kingdom");
-		kingdom2.setAlignment(Alignment.LAWFUL_GOOD);
 	}
 
 	/**
@@ -115,127 +115,32 @@ public class KingdomTestCase {
 	}
 
 	/**
-	 * Test leader warden.
+	 * Test add leader.
 	 */
 	@Test
-	public void testLeaderWarden() {
-		kingdom.setLeader(LeadershipRoles.Warden, new Leader("Hayato",
-				LeadershipRoles.Warden, -5, 1500, 1, 3, 5, 0));
+	public void testAddLeader() {
+		Leader leader = new Leader("Hayato", LeadershipRoles.Warden, 10, 12,
+				14, 15, 9, 18);
+		Map<KingdomAttributes, Integer> attributes = new HashMap<KingdomAttributes, Integer>();
+		attributes.put(KingdomAttributes.Economy, leader.getBonusCHA());
+		leader.setAttributes(attributes);
+		kingdom.addLeader(leader);
+		Assert.assertTrue(kingdom.getEconomy() == 4);
 	}
 
 	/**
-	 * Test leader viceroy.
+	 * Test remove leader.
 	 */
 	@Test
-	public void testLeaderViceroy() {
-		kingdom.setLeader(LeadershipRoles.Viceroy, new Leader("Mérisiel",
-				LeadershipRoles.Viceroy, 18, 17, 16, 15, 14, 13));
-	}
-
-	/**
-	 * Test leader treasurer.
-	 */
-	@Test
-	public void testLeaderTreasurer() {
-		kingdom.setLeader(LeadershipRoles.Treasurer, new Leader("Harsk",
-				LeadershipRoles.Treasurer, 3, 2, 1, 0, -1, -2));
-	}
-
-	/**
-	 * Test leader spy master.
-	 */
-	@Test
-	public void testLeaderSpyMaster() {
-		kingdom.setLeader(LeadershipRoles.Spymaster, new Leader("Kyra",
-				LeadershipRoles.Spymaster, 9, 8, 7, 6, 5, 0));
-	}
-
-	/**
-	 * Test leader royal enforcer.
-	 */
-	@Test
-	public void testLeaderRoyalEnforcer() {
-		kingdom.setLeader(LeadershipRoles.Royal_Enforcer, new Leader(
-				"Lyrianne", LeadershipRoles.Royal_Enforcer, 9, 8, 7, 18, 17, 1));
-	}
-
-	/**
-	 * Test leader marshal.
-	 */
-	@Test
-	public void testLeaderMarshal() {
-		kingdom.setLeader(LeadershipRoles.Marshal, new Leader("Seelah",
-				LeadershipRoles.Marshal, 10, 9, 8, 7, 18, 2));
-	}
-
-	/**
-	 * Test leader magister.
-	 */
-	public void testLeaderMagister() {
-		kingdom.setLeader(LeadershipRoles.Magister, new Leader("Reiko",
-				LeadershipRoles.Magister, 11, 10, 9, 8, 7, 3));
-	}
-
-	/**
-	 * Test leader high priest.
-	 */
-	@Test
-	public void testLeaderHighPriest() {
-		kingdom.setLeader(LeadershipRoles.High_Priest, new Leader("Sajan",
-				LeadershipRoles.High_Priest, 12, 11, 10, 9, 8, 4));
-	}
-
-	/**
-	 * Test leader heir.
-	 */
-	public void testLeaderHeir() {
-		kingdom.setLeader(LeadershipRoles.Heir, new Leader("Ezren",
-				LeadershipRoles.Heir, 13, 12, 11, 10, 9, 5));
-	}
-
-	/**
-	 * Test leader grand diplomat.
-	 */
-	@Test
-	public void testLeaderGrandDiplomat() {
-		kingdom.setLeader(LeadershipRoles.Grand_Diplomat, new Leader("Valéros",
-				LeadershipRoles.Grand_Diplomat, 14, 13, 12, 11, 10, 6));
-	}
-
-	/**
-	 * Test leader general.
-	 */
-	@Test
-	public void testLeaderGeneral() {
-		kingdom.setLeader(LeadershipRoles.General, new Leader("Séoni",
-				LeadershipRoles.General, 15, 13, 12, 11, 10, 7));
-	}
-
-	/**
-	 * Test leader councilor.
-	 */
-	@Test
-	public void testLeaderCouncilor() {
-		kingdom.setLeader(LeadershipRoles.Councilor, new Leader("Lini",
-				LeadershipRoles.Councilor, 16, 15, 13, 12, 11, 8));
-	}
-
-	/**
-	 * Test leader consort.
-	 */
-	@Test
-	public void testLeaderConsort() {
-		kingdom.setLeader(LeadershipRoles.Consort, new Leader("Lem",
-				LeadershipRoles.Consort, 17, 16, 15, 14, 13, 9));
-	}
-
-	/**
-	 * Test leader ruler.
-	 */
-	@Test
-	public void testLeaderRuler() {
-		kingdom.setLeader(LeadershipRoles.Ruler, new Leader("Amiri",
-				LeadershipRoles.Ruler, 18, 17, 16, 15, 14, 10));
+	public void testRemoveLeader() {
+		Leader leader = new Leader("Hayato", LeadershipRoles.Warden, 10, 12,
+				14, 15, 9, 18);
+		Map<KingdomAttributes, Integer> attributes = new HashMap<KingdomAttributes, Integer>();
+		attributes.put(KingdomAttributes.Economy, leader.getBonusCHA());
+		leader.setAttributes(attributes);
+		kingdom.addLeader(leader);
+		kingdom.removeLeader(leader);
+		Assert.assertTrue(kingdom.getEconomy() == 0);
 	}
 
 	/**
@@ -277,92 +182,126 @@ public class KingdomTestCase {
 		Assert.assertTrue(testSucceed > 30 && testSucceed < 970);
 	}
 
+	/**
+	 * Test add stability.
+	 */
 	@Test
 	public void testAddStability() {
-		kingdom2.addStability(5);
-		Assert.assertTrue(kingdom2.getStability() == 5);
+		kingdom.addStability(5);
+		Assert.assertTrue(kingdom.getStability() == 5);
 	}
 
+	/**
+	 * Test add economy.
+	 */
 	@Test
 	public void testAddEconomy() {
-		kingdom2.addEconomy(10);
-		Assert.assertTrue(kingdom2.getEconomy() == 12);
+		kingdom.addEconomy(10);
+		Assert.assertTrue(kingdom.getEconomy() == 10);
 	}
 
+	/**
+	 * Test add loyalty.
+	 */
 	@Test
 	public void testAddLoyalty() {
-		kingdom2.addLoyalty(7);
-		Assert.assertTrue(kingdom2.getLoyalty() == 9);
+		kingdom.addLoyalty(7);
+		Assert.assertTrue(kingdom.getLoyalty() == 7);
 	}
 
+	/**
+	 * Test add population.
+	 */
 	@Test
 	public void testAddPopulation() {
-		kingdom2.addPopulation(5000);
-		Assert.assertTrue(kingdom2.getPopulation() == 5000);
+		kingdom.addPopulation(5000);
+		Assert.assertTrue(kingdom.getPopulation() == 5000);
 	}
 
+	/**
+	 * Test add consumption.
+	 */
 	@Test
 	public void testAddConsumption() {
-		kingdom2.setConsumption(5);
-		Assert.assertTrue(kingdom2.getConsumption() == 5);
+		kingdom.setConsumption(5);
+		Assert.assertTrue(kingdom.getConsumption() == 5);
 	}
 
+	/**
+	 * Test treasury.
+	 */
 	@Test
 	public void testTreasury() {
-		kingdom2.addTreasury(10000);
-		kingdom2.addTreasury(-5000);
-		Assert.assertTrue(kingdom2.getTreasury() == 5000);
+		kingdom.addTreasury(10000);
+		kingdom.addTreasury(-5000);
+		Assert.assertTrue(kingdom.getTreasury() == 5000);
 	}
 
+	/**
+	 * Test turn.
+	 */
 	@Test
 	public void testTurn() {
 		int turn = 0;
 		for (int i = 0; i < 20; i++) {
-			kingdom2.addTurn();
+			kingdom.addTurn();
 			turn++;
 		}
-		Assert.assertTrue(kingdom2.getTurn() == turn);
+		Assert.assertTrue(kingdom.getTurn() == turn);
 	}
 
+	/**
+	 * Test add unrest.
+	 */
 	@Test
 	public void testAddUnrest() {
-		kingdom2.addUnrest(10);
-		Assert.assertTrue(kingdom2.getUnrest() == 10);
+		kingdom.addUnrest(10);
+		Assert.assertTrue(kingdom.getUnrest() == 10);
 	}
 
+	/**
+	 * Test add unrest negative value.
+	 */
 	@Test
 	public void testAddUnrestNegativeValue() {
-		kingdom2.addUnrest(10);
-		kingdom2.addUnrest(-20);
-		Assert.assertTrue(kingdom2.getUnrest() == 0);
+		kingdom.addUnrest(10);
+		kingdom.addUnrest(-20);
+		Assert.assertTrue(kingdom.getUnrest() == 0);
 	}
 
+	/**
+	 * Test add unrest so anarchy.
+	 */
 	@Test
 	public void testAddUnrestSoAnarchy() {
-		kingdom2.addUnrest(21);
-		Assert.assertTrue(kingdom2.isAnarchy());
-		kingdom2.addUnrest(-50);
-		kingdom2.setAnarchy(false);
+		kingdom.addUnrest(21);
+		Assert.assertTrue(kingdom.isAnarchy());
 	}
 
+	/**
+	 * Test add size.
+	 */
 	@Test
 	public void testAddSize() {
-		kingdom2.addSize(10);
-		Assert.assertTrue(kingdom2.getSize() == 11);
-		kingdom.addSize(-10);
+		kingdom.addSize(10);
+		Assert.assertTrue(kingdom.getSize() == 11);
 	}
 
+	/**
+	 * Test add size to augment control dc.
+	 */
 	@Test
 	public void testAddSizeToAugmentControlDC() {
-		kingdom2.addSize(10);
-		Assert.assertTrue(kingdom2.getControlDC() == 31);
-		kingdom.addSize(-10);
+		kingdom.addSize(10);
+		Assert.assertTrue(kingdom.getControlDC() == 31);
 	}
 
+	/**
+	 * Test control dc.
+	 */
 	@Test
 	public void testControlDC() {
-		kingdom2.setControlDC(10);
-		Assert.assertTrue(kingdom2.getControlDC() == 10);
-		kingdom2.setControlDC(21);
+		kingdom.setControlDC(10);
+		Assert.assertTrue(kingdom.getControlDC() == 10);
 	}
 }

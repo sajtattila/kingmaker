@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.glytch.kingmaker.model.util.Alignment;
 import org.glytch.kingmaker.model.util.Dice;
+import org.glytch.kingmaker.model.util.KingdomAttributes;
 import org.glytch.kingmaker.model.util.LeadershipRoles;
 import org.glytch.kingmaker.model.util.Square;
 
@@ -44,24 +45,55 @@ public class Kingdom {
 	}
 
 	/**
-	 * Sets the leader.
+	 * Remove a leader from the leaders Update bonus score on loyalty, economy
+	 * or stability.
 	 *
-	 * @param role the role
-	 * @param leader the leader
+	 * @param leader the leader to remove
 	 */
-	public void setLeader(LeadershipRoles role, Leader leader) {
-		// if leader is already leading a role
-		if (leaders.containsValue(leader)) {
-			// remove the old leader at old role
-			leaders.remove(leader.getRole());
-			// removeBonusFromLeader(leader.getRoleToAddBonus(),
-			// leader.getBonusToAddToRole());
-		}
-		// assigning new role to the leader
-		leader.setRole(role);
-		leaders.put(role, leader);
-
+	public void removeLeader(Leader leader) {
+		leaders.remove(leader.getRole());
 		// Update bonus score on loyalty, economy or stability
+		for (KingdomAttributes attribute : leader.getAttributes().keySet()) {
+			switch (attribute) {
+			case Economy:
+				addEconomy(-leader.getAttributes().get(attribute));
+				break;
+			case Loyalty:
+				addLoyalty(-leader.getAttributes().get(attribute));
+				break;
+			case Stability:
+				addStability(-leader.getAttributes().get(attribute));
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
+	/**
+	 * Add a leader to the leaders Update bonus score on loyalty, economy or
+	 * stability.
+	 *
+	 * @param leader the leader to add
+	 */
+	public void addLeader(Leader leader) {
+		leaders.put(leader.getRole(), leader);
+		// Update bonus score on loyalty, economy or stability
+		for (KingdomAttributes attribute : leader.getAttributes().keySet()) {
+			switch (attribute) {
+			case Economy:
+				addEconomy(leader.getAttributes().get(attribute));
+				break;
+			case Loyalty:
+				addLoyalty(leader.getAttributes().get(attribute));
+				break;
+			case Stability:
+				addStability(leader.getAttributes().get(attribute));
+				break;
+			default:
+				break;
+			}
+		}
 	}
 
 	/**
@@ -467,7 +499,7 @@ public class Kingdom {
 	/**
 	 * Sets the territories.
 	 *
-	 * @param territories the territories
+	 * @param hexes the hexes
 	 */
 	public void setHexes(Map<Square, Hex> hexes) {
 		this.hexes = hexes;

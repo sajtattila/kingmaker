@@ -1,7 +1,9 @@
 package org.glytch.kingmaker.Kingmaker;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.glytch.kingmaker.model.Leader;
 import org.glytch.kingmaker.model.util.KingdomAttributes;
@@ -55,10 +57,12 @@ public class LeaderTestCase {
 	 */
 	@Test
 	public void testKingdomAttributes() {
-		List<KingdomAttributes> attributes = new ArrayList<KingdomAttributes>();
-		attributes.add(KingdomAttributes.Economy);
+		Map<KingdomAttributes, Integer> attributes = new HashMap<KingdomAttributes, Integer>();
+		attributes.put(KingdomAttributes.Economy, amiri.getBonusCHA());
 		amiri.setAttributes(attributes);
-		Assert.assertTrue(amiri.getAttributes().equals(attributes));
+		Assert.assertTrue(amiri.getAttributes().equals(attributes)
+				&& amiri.getAttributes().get(KingdomAttributes.Economy) == amiri
+						.getBonusCHA());
 
 	}
 
