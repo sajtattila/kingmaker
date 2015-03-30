@@ -338,6 +338,7 @@ public class Leader {
 	 * 
 	 * @see java.lang.Object#toString()
 	 */
+	@Override
 	public String toString() {
 		/*
 		 * StringBuffer buffer = new StringBuffer(); buffer.append(role + "(" +

@@ -288,4 +288,14 @@ public class Building {
 	public void setOnlyOnePerCity(boolean onlyOnePerCity) {
 		this.onlyOnePerCity = onlyOnePerCity;
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return name;
+	}
 }

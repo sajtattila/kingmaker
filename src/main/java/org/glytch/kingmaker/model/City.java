@@ -56,4 +56,14 @@ public class City {
 	public void setQuarters(List<Quarter> quarters) {
 		this.quarters = quarters;
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return name;
+	}
 }

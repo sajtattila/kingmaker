@@ -557,6 +557,7 @@ public class Kingdom {
 	 * 
 	 * @see java.lang.Object#toString()
 	 */
+	@Override
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("Kingdom " + name + "\n");
