@@ -21,12 +21,12 @@ public class Kingdom {
 	private Alignment alignment;
 	private int buildPoints = 0;
 	private int consumption = 0;
-	private int controlDC = 21;
+	private int controlDC = 20;
 	private int economy = 0;
 	private int loyalty = 0;
 	private int stability = 0;
 	private int population = 0;
-	private int size = 1;
+	private int size = 0;
 	private double treasury = 0.0;
 	private int turn = 0;
 	private int unrest = 0;
@@ -39,10 +39,13 @@ public class Kingdom {
 	 * Instantiates a new kingdom.
 	 *
 	 * @param name the name
+	 * @param hex the hex
 	 */
-	public Kingdom(String name) {
+	public Kingdom(String name, Hex hex) {
 		this.name = name;
 		leaders = new HashMap<LeadershipRoles, Leader>();
+		hexes = new HashMap<Square, Hex>();
+		addHex(hex);
 	}
 
 	/**
@@ -519,6 +522,16 @@ public class Kingdom {
 	 */
 	public void setHexes(Map<Square, Hex> hexes) {
 		this.hexes = hexes;
+	}
+
+	/**
+	 * Adds the hex.
+	 *
+	 * @param hex the hex
+	 */
+	public void addHex(Hex hex) {
+		hexes.put(hex.getSquare(), hex);
+		addSize(1);
 	}
 
 	/**

@@ -3,11 +3,13 @@ package org.glytch.kingmaker.Kingmaker;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.glytch.kingmaker.model.Hex;
 import org.glytch.kingmaker.model.Kingdom;
 import org.glytch.kingmaker.model.Leader;
 import org.glytch.kingmaker.model.util.Alignment;
 import org.glytch.kingmaker.model.util.KingdomAttributes;
 import org.glytch.kingmaker.model.util.LeadershipRoles;
+import org.glytch.kingmaker.model.util.Square;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +26,7 @@ public class KingdomTestCase {
 	 */
 	@Before
 	public void init() {
-		kingdom = new Kingdom("My Kingdom");
+		kingdom = new Kingdom("My Kingdom", new Hex(new Square('A', 1)));
 	}
 
 	/**
@@ -326,5 +328,14 @@ public class KingdomTestCase {
 	public void testControlDC() {
 		kingdom.setControlDC(10);
 		Assert.assertTrue(kingdom.getControlDC() == 10);
+	}
+
+	/**
+	 * Test add hex to augment size.
+	 */
+	@Test
+	public void testAddHexToAugmentSize() {
+		kingdom.addHex(new Hex(new Square('A', 2)));
+		Assert.assertTrue(kingdom.getSize() == 2);
 	}
 }
