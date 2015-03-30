@@ -3,6 +3,7 @@
  */
 package org.glytch.kingmaker.model;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.glytch.kingmaker.model.util.KingdomAttributes;
@@ -45,6 +46,11 @@ public class Leader {
 		INT = iNT;
 		WIS = wIS;
 		CHA = cHA;
+
+		attributes = new HashMap<KingdomAttributes, Integer>();
+		for (KingdomAttributes attribute : KingdomAttributes.values()) {
+			attributes.put(attribute, 0);
+		}
 	}
 
 	/**
@@ -306,6 +312,16 @@ public class Leader {
 	 */
 	public Map<KingdomAttributes, Integer> getAttributes() {
 		return attributes;
+	}
+
+	/**
+	 * Adds the attribute to attributes.
+	 *
+	 * @param attribute the attribute to add
+	 * @param bonus the bonus stats to add
+	 */
+	public void addAttribute(KingdomAttributes attribute, Integer bonus) {
+		attributes.put(attribute, bonus);
 	}
 
 	/**

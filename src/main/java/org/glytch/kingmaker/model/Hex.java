@@ -14,9 +14,11 @@ public class Hex {
 	private City city = null;
 	private String name = null;
 	private boolean claimed = false;
-	private boolean hasRiver;
-	private boolean hasRoad;
-	private boolean hasFarm;
+	private boolean cleaned = false;
+	private boolean explored = false;
+	private boolean hasRiver = false;
+	private boolean hasRoad = false;
+	private boolean hasFarm = false;
 
 	/**
 	 * Instantiates a new hex.
@@ -176,5 +178,50 @@ public class Hex {
 	 */
 	public void setHasFarm(boolean hasFarm) {
 		this.hasFarm = hasFarm;
+	}
+
+	/**
+	 * Checks if is cleaned.
+	 *
+	 * @return the cleaned
+	 */
+	public boolean isCleaned() {
+		return cleaned;
+	}
+
+	/**
+	 * Sets the cleaned.
+	 *
+	 * @param cleaned the cleaned to set
+	 */
+	public void setCleaned(boolean cleaned) {
+		this.cleaned = cleaned;
+	}
+
+	/**
+	 * Checks if is explored.
+	 *
+	 * @return the explored
+	 */
+	public boolean isExplored() {
+		return explored;
+	}
+
+	/**
+	 * Sets the explored.
+	 *
+	 * @param explored the explored to set
+	 */
+	public void setExplored(boolean explored) {
+		this.explored = explored;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return square + " " + name;
 	}
 }

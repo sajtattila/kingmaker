@@ -54,4 +54,11 @@ public class Square {
 	public void setNumber(int number) {
 		this.number = number;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return letter + "" + number;
+	}
 }

@@ -129,6 +129,17 @@ public class KingdomTestCase {
 	}
 
 	/**
+	 * Test add leader attribute null.
+	 */
+	@Test
+	public void testAddLeaderAttributeNull() {
+		Leader leader = new Leader("Hayato", LeadershipRoles.Warden, 10, 12,
+				14, 15, 9, 18);
+		kingdom.addLeader(leader);
+		Assert.assertFalse(kingdom.getEconomy() == 4);
+	}
+
+	/**
 	 * Test remove leader.
 	 */
 	@Test
@@ -141,6 +152,18 @@ public class KingdomTestCase {
 		kingdom.addLeader(leader);
 		kingdom.removeLeader(leader);
 		Assert.assertTrue(kingdom.getEconomy() == 0);
+	}
+
+	/**
+	 * Test remove leader attribute null.
+	 */
+	@Test
+	public void testRemoveLeaderAttributeNull() {
+		Leader leader = new Leader("Hayato", LeadershipRoles.Warden, 10, 12,
+				14, 15, 9, 18);
+		kingdom.addLeader(leader);
+		kingdom.removeLeader(leader);
+		Assert.assertFalse(kingdom.getEconomy() == 4);
 	}
 
 	/**

@@ -33,6 +33,7 @@ public class Kingdom {
 	private boolean anarchy = false;
 	private Map<LeadershipRoles, Leader> leaders;
 	private Map<Square, Hex> hexes;
+	private City capital;
 
 	/**
 	 * Instantiates a new kingdom.
@@ -42,58 +43,6 @@ public class Kingdom {
 	public Kingdom(String name) {
 		this.name = name;
 		leaders = new HashMap<LeadershipRoles, Leader>();
-	}
-
-	/**
-	 * Remove a leader from the leaders Update bonus score on loyalty, economy
-	 * or stability.
-	 *
-	 * @param leader the leader to remove
-	 */
-	public void removeLeader(Leader leader) {
-		leaders.remove(leader.getRole());
-		// Update bonus score on loyalty, economy or stability
-		for (KingdomAttributes attribute : leader.getAttributes().keySet()) {
-			switch (attribute) {
-			case Economy:
-				addEconomy(-leader.getAttributes().get(attribute));
-				break;
-			case Loyalty:
-				addLoyalty(-leader.getAttributes().get(attribute));
-				break;
-			case Stability:
-				addStability(-leader.getAttributes().get(attribute));
-				break;
-			default:
-				break;
-			}
-		}
-	}
-
-	/**
-	 * Add a leader to the leaders Update bonus score on loyalty, economy or
-	 * stability.
-	 *
-	 * @param leader the leader to add
-	 */
-	public void addLeader(Leader leader) {
-		leaders.put(leader.getRole(), leader);
-		// Update bonus score on loyalty, economy or stability
-		for (KingdomAttributes attribute : leader.getAttributes().keySet()) {
-			switch (attribute) {
-			case Economy:
-				addEconomy(leader.getAttributes().get(attribute));
-				break;
-			case Loyalty:
-				addLoyalty(leader.getAttributes().get(attribute));
-				break;
-			case Stability:
-				addStability(leader.getAttributes().get(attribute));
-				break;
-			default:
-				break;
-			}
-		}
 	}
 
 	/**
@@ -488,21 +437,106 @@ public class Kingdom {
 	}
 
 	/**
-	 * Gets the territories.
+	 * Sets the leaders.
 	 *
-	 * @return the territories
+	 * @param leaders the leaders to set
+	 */
+	public void setLeaders(Map<LeadershipRoles, Leader> leaders) {
+		for (Leader leader : leaders.values()) {
+			addLeader(leader);
+		}
+	}
+
+	/**
+	 * Add a leader to the leaders, update bonus score on loyalty, economy or
+	 * stability.
+	 *
+	 * @param leader the leader to add
+	 */
+	public void addLeader(Leader leader) {
+		leaders.put(leader.getRole(), leader);
+		// Update bonus score on loyalty, economy or stability
+		for (KingdomAttributes attribute : leader.getAttributes().keySet()) {
+			if (attribute != null) {
+				switch (attribute) {
+				case Economy:
+					addEconomy(leader.getAttributes().get(attribute));
+					break;
+				case Loyalty:
+					addLoyalty(leader.getAttributes().get(attribute));
+					break;
+				case Stability:
+					addStability(leader.getAttributes().get(attribute));
+					break;
+				default:
+					break;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Remove a leader from the leaders Update bonus score on loyalty, economy
+	 * or stability.
+	 *
+	 * @param leader the leader to remove
+	 */
+	public void removeLeader(Leader leader) {
+		leaders.remove(leader.getRole());
+		// Update bonus score on loyalty, economy or stability
+		for (KingdomAttributes attribute : leader.getAttributes().keySet()) {
+			if (attribute != null) {
+				switch (attribute) {
+				case Economy:
+					addEconomy(-leader.getAttributes().get(attribute));
+					break;
+				case Loyalty:
+					addLoyalty(-leader.getAttributes().get(attribute));
+					break;
+				case Stability:
+					addStability(-leader.getAttributes().get(attribute));
+					break;
+				default:
+					break;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Gets the hexes.
+	 *
+	 * @return the hexes
 	 */
 	public Map<Square, Hex> getHexes() {
 		return hexes;
 	}
 
 	/**
-	 * Sets the territories.
+	 * Sets the hexes.
 	 *
 	 * @param hexes the hexes
 	 */
 	public void setHexes(Map<Square, Hex> hexes) {
 		this.hexes = hexes;
+	}
+
+	/**
+	 * Gets the capital.
+	 *
+	 * @return the capital
+	 */
+	public City getCapital() {
+		return capital;
+	}
+
+	/**
+	 * Sets the capital.
+	 *
+	 * @param capital the capital to set
+	 */
+	public void setCapital(City capital) {
+		this.capital = capital;
 	}
 
 	/*
@@ -512,7 +546,7 @@ public class Kingdom {
 	 */
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
-		buffer.append(name + "\n");
+		buffer.append("Kingdom " + name + "\n");
 		buffer.append("alignment " + alignment + "\n");
 		buffer.append("build points " + buildPoints + "\n");
 		buffer.append("consumption " + consumption + "\n");

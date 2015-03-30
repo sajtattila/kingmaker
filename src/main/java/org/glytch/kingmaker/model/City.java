@@ -1,5 +1,6 @@
 package org.glytch.kingmaker.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,6 +18,7 @@ public class City {
 	 */
 	public City(String name) {
 		this.name = name;
+		quarters = new ArrayList<Quarter>();
 	}
 
 	/**
