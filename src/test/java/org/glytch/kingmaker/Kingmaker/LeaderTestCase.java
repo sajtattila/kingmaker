@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.glytch.kingmaker.model.Leader;
-import org.glytch.kingmaker.model.util.KingdomAttributes;
-import org.glytch.kingmaker.model.util.LeadershipRoles;
+import org.glytch.kingmaker.model.enums.KingdomAttributes;
+import org.glytch.kingmaker.model.enums.LeadershipRoles;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

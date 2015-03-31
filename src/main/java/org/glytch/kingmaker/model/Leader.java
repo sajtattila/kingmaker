@@ -6,8 +6,8 @@ package org.glytch.kingmaker.model;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.glytch.kingmaker.model.util.KingdomAttributes;
-import org.glytch.kingmaker.model.util.LeadershipRoles;
+import org.glytch.kingmaker.model.enums.KingdomAttributes;
+import org.glytch.kingmaker.model.enums.LeadershipRoles;
 
 /**
  * The Class Leader.

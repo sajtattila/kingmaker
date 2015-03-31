@@ -6,10 +6,10 @@ package org.glytch.kingmaker.model;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.glytch.kingmaker.model.util.Alignment;
+import org.glytch.kingmaker.model.enums.Alignment;
+import org.glytch.kingmaker.model.enums.KingdomAttributes;
+import org.glytch.kingmaker.model.enums.LeadershipRoles;
 import org.glytch.kingmaker.model.util.Dice;
-import org.glytch.kingmaker.model.util.KingdomAttributes;
-import org.glytch.kingmaker.model.util.LeadershipRoles;
 import org.glytch.kingmaker.model.util.Square;
 
 /**
