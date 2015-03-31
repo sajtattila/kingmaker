@@ -3,7 +3,6 @@
  */
 package org.glytch.kingmaker.model;
 
-import org.glytch.kingmaker.model.util.Square;
 
 /**
  * The Class Hex.

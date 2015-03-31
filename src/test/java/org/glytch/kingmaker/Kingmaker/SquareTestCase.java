@@ -3,7 +3,7 @@
  */
 package org.glytch.kingmaker.Kingmaker;
 
-import org.glytch.kingmaker.model.util.Square;
+import org.glytch.kingmaker.model.Square;
 import org.junit.Assert;
 import org.junit.Test;
 

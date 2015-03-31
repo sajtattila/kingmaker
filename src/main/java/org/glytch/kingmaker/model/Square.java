@@ -1,4 +1,4 @@
-package org.glytch.kingmaker.model.util;
+package org.glytch.kingmaker.model;
 
 /**
  * The Class Square.

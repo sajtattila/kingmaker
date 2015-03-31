@@ -10,7 +10,6 @@ import org.glytch.kingmaker.model.enums.Alignment;
 import org.glytch.kingmaker.model.enums.KingdomAttributes;
 import org.glytch.kingmaker.model.enums.LeadershipRoles;
 import org.glytch.kingmaker.model.util.Dice;
-import org.glytch.kingmaker.model.util.Square;
 
 /**
  * The Class Kingdom.

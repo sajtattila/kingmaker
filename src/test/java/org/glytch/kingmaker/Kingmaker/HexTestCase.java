@@ -5,7 +5,7 @@ package org.glytch.kingmaker.Kingmaker;
 
 import org.glytch.kingmaker.model.City;
 import org.glytch.kingmaker.model.Hex;
-import org.glytch.kingmaker.model.util.Square;
+import org.glytch.kingmaker.model.Square;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
