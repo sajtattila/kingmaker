@@ -3,13 +3,16 @@ package org.glytch.kingmaker.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Data;
+
 /**
  * The Class City.
  */
+@Data
 public class City {
 
 	private String name;
-	private List<Quarter> quarters;
+	private List<Quarter> quarters = new ArrayList<Quarter>();
 
 	/**
 	 * Instantiates a new city.
@@ -18,42 +21,16 @@ public class City {
 	 */
 	public City(String name) {
 		this.name = name;
-		quarters = new ArrayList<Quarter>();
 	}
 
 	/**
-	 * Gets the name.
+	 * Instantiates a new city.
 	 *
-	 * @return the name
+	 * @param name the name
+	 * @param quarters the quarters
 	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * Sets the name.
-	 *
-	 * @param name the new name
-	 */
-	public void setName(String name) {
+	public City(String name, List<Quarter> quarters) {
 		this.name = name;
-	}
-
-	/**
-	 * Gets the quarters.
-	 *
-	 * @return the quarters
-	 */
-	public List<Quarter> getQuarters() {
-		return quarters;
-	}
-
-	/**
-	 * Sets the quarters.
-	 *
-	 * @param quarters the new quarters
-	 */
-	public void setQuarters(List<Quarter> quarters) {
 		this.quarters = quarters;
 	}
 

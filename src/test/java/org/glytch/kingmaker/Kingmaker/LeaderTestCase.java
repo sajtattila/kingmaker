@@ -21,7 +21,7 @@ public class LeaderTestCase {
 	private Leader amiri;
 
 	/**
-	 * Inits the leaders.
+	 * Inits the.
 	 */
 	@Before
 	public void init() {

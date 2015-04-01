@@ -12,8 +12,6 @@ import org.junit.Test;
 
 /**
  * The Class HexTestCase.
- *
- * @author Matthieu
  */
 public class HexTestCase {
 
@@ -44,7 +42,7 @@ public class HexTestCase {
 	@Test
 	public void testConstructor2() {
 		hex = new Hex(new Square('A', 1), "My hex", true);
-		Assert.assertTrue(hex.hasRiver() && hex.getName().equals("My hex"));
+		Assert.assertTrue(hex.isHasRiver() && hex.getName().equals("My hex"));
 	}
 
 	/**
@@ -98,7 +96,7 @@ public class HexTestCase {
 	@Test
 	public void testHasRiver() {
 		hex.setHasRiver(true);
-		Assert.assertTrue(hex.hasRiver());
+		Assert.assertTrue(hex.isHasRiver());
 	}
 
 	/**
@@ -107,7 +105,7 @@ public class HexTestCase {
 	@Test
 	public void testHasRoad() {
 		hex.setHasRoad(true);
-		Assert.assertTrue(hex.hasRoad());
+		Assert.assertTrue(hex.isHasRoad());
 	}
 
 	/**
@@ -116,6 +114,6 @@ public class HexTestCase {
 	@Test
 	public void testHasFarm() {
 		hex.setHasFarm(true);
-		Assert.assertTrue(hex.hasFarm());
+		Assert.assertTrue(hex.isHasFarm());
 	}
 }

@@ -48,8 +48,7 @@ public class Kingdom {
 	}
 
 	/**
-	 * Economy test under controlDC. Roll dice 20, a natural 1 is a fail, a
-	 * natural 20 is a pass
+	 * Economy test.
 	 *
 	 * @return true, if successful
 	 */
@@ -64,8 +63,7 @@ public class Kingdom {
 	}
 
 	/**
-	 * Loyalty test under controlDC. Roll dice 20, a natural 1 is a fail, a
-	 * natural 20 is a pass
+	 * Loyalty test.
 	 *
 	 * @return true, if successful
 	 */
@@ -80,8 +78,7 @@ public class Kingdom {
 	}
 
 	/**
-	 * Stability test under controlDC. Roll dice 20, a natural 1 is a fail, a
-	 * natural 20 is a pass
+	 * Stability test.
 	 *
 	 * @return true, if successful
 	 */
@@ -345,7 +342,7 @@ public class Kingdom {
 	}
 
 	/**
-	 * Adds the size. Augmenting size augments controlDC
+	 * Adds the size.
 	 *
 	 * @param size the size
 	 */
@@ -441,7 +438,7 @@ public class Kingdom {
 	/**
 	 * Sets the leaders.
 	 *
-	 * @param leaders the leaders to set
+	 * @param leaders the leaders
 	 */
 	public void setLeaders(Map<LeadershipRoles, Leader> leaders) {
 		for (Leader leader : leaders.values()) {
@@ -450,10 +447,9 @@ public class Kingdom {
 	}
 
 	/**
-	 * Add a leader to the leaders, update bonus score on loyalty, economy or
-	 * stability.
+	 * Adds the leader.
 	 *
-	 * @param leader the leader to add
+	 * @param leader the leader
 	 */
 	public void addLeader(Leader leader) {
 		leaders.put(leader.getRole(), leader);
@@ -478,10 +474,9 @@ public class Kingdom {
 	}
 
 	/**
-	 * Remove a leader from the leaders Update bonus score on loyalty, economy
-	 * or stability.
+	 * Removes the leader.
 	 *
-	 * @param leader the leader to remove
+	 * @param leader the leader
 	 */
 	public void removeLeader(Leader leader) {
 		leaders.remove(leader.getRole());
@@ -545,7 +540,7 @@ public class Kingdom {
 	/**
 	 * Sets the capital.
 	 *
-	 * @param capital the capital to set
+	 * @param capital the new capital
 	 */
 	public void setCapital(City capital) {
 		this.capital = capital;

@@ -6,12 +6,15 @@ package org.glytch.kingmaker.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import lombok.Data;
+
 import org.glytch.kingmaker.model.enums.KingdomAttributes;
 import org.glytch.kingmaker.model.enums.LeadershipRoles;
 
 /**
  * The Class Leader.
  */
+@Data
 public class Leader {
 
 	private String name;
@@ -54,33 +57,6 @@ public class Leader {
 	}
 
 	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * Sets the name.
-	 *
-	 * @param name the new name
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/**
-	 * Gets the str.
-	 *
-	 * @return the str
-	 */
-	public int getSTR() {
-		return STR;
-	}
-
-	/**
 	 * Gets the bonus str.
 	 *
 	 * @return the bonus str
@@ -105,15 +81,6 @@ public class Leader {
 		STR = sTR;
 		if (STR < 0)
 			STR = 0;
-	}
-
-	/**
-	 * Gets the dex.
-	 *
-	 * @return the dex
-	 */
-	public int getDEX() {
-		return DEX;
 	}
 
 	/**
@@ -144,15 +111,6 @@ public class Leader {
 	}
 
 	/**
-	 * Gets the con.
-	 *
-	 * @return the con
-	 */
-	public int getCON() {
-		return CON;
-	}
-
-	/**
 	 * Gets the bonus con.
 	 *
 	 * @return the bonus con
@@ -177,15 +135,6 @@ public class Leader {
 		CON = cON;
 		if (CON < 0)
 			CON = 0;
-	}
-
-	/**
-	 * Gets the int.
-	 *
-	 * @return the int
-	 */
-	public int getINT() {
-		return INT;
 	}
 
 	/**
@@ -216,15 +165,6 @@ public class Leader {
 	}
 
 	/**
-	 * Gets the wis.
-	 *
-	 * @return the wis
-	 */
-	public int getWIS() {
-		return WIS;
-	}
-
-	/**
 	 * Gets the bonus wis.
 	 *
 	 * @return the bonus wis
@@ -249,15 +189,6 @@ public class Leader {
 		WIS = wIS;
 		if (WIS < 0)
 			WIS = 0;
-	}
-
-	/**
-	 * Gets the cha.
-	 *
-	 * @return the cha
-	 */
-	public int getCHA() {
-		return CHA;
 	}
 
 	/**
@@ -288,49 +219,13 @@ public class Leader {
 	}
 
 	/**
-	 * Gets the role.
+	 * Adds the attribute.
 	 *
-	 * @return the role
-	 */
-	public LeadershipRoles getRole() {
-		return role;
-	}
-
-	/**
-	 * Sets the role.
-	 *
-	 * @param role the new role
-	 */
-	public void setRole(LeadershipRoles role) {
-		this.role = role;
-	}
-
-	/**
-	 * Gets the attributes.
-	 *
-	 * @return the attributes
-	 */
-	public Map<KingdomAttributes, Integer> getAttributes() {
-		return attributes;
-	}
-
-	/**
-	 * Adds the attribute to attributes.
-	 *
-	 * @param attribute the attribute to add
-	 * @param bonus the bonus stats to add
+	 * @param attribute the attribute
+	 * @param bonus the bonus
 	 */
 	public void addAttribute(KingdomAttributes attribute, Integer bonus) {
 		attributes.put(attribute, bonus);
-	}
-
-	/**
-	 * Sets the attributes.
-	 *
-	 * @param attributes the new attributes
-	 */
-	public void setAttributes(Map<KingdomAttributes, Integer> attributes) {
-		this.attributes = attributes;
 	}
 
 	/*

@@ -9,8 +9,6 @@ import org.junit.Test;
 
 /**
  * The Class SquareTestCase.
- *
- * @author Matthieu
  */
 public class SquareTestCase {
 

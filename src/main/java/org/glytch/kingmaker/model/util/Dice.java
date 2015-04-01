@@ -14,10 +14,10 @@ public class Dice {
 	private static Random rd = new Random();
 
 	/**
-	 * Roll a dice.
+	 * Roll.
 	 *
-	 * @param dice The number of face of the dice to roll
-	 * @return the roll result between 1 and dice
+	 * @param dice the dice
+	 * @return the int
 	 */
 	public static int roll(int dice) {
 		return rd.nextInt(dice) + 1;

@@ -11,8 +11,6 @@ import org.junit.Test;
 
 /**
  * The Class CityTestCase.
- *
- * @author Matthieu
  */
 public class CityTestCase {
 

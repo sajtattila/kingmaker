@@ -1,14 +1,25 @@
 package org.glytch.kingmaker.model;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import lombok.Data;
 
 /**
  * The Class Quarter.
  */
+@Data
 public class Quarter {
 
-	private String name;
+	private String name = "";
 	private List<Building> buildings;
+
+	/**
+	 * Instantiates a new quarter.
+	 */
+	public Quarter() {
+		buildings = new ArrayList<Building>();
+	}
 
 	/**
 	 * Instantiates a new quarter.
@@ -16,42 +27,18 @@ public class Quarter {
 	 * @param name the name
 	 */
 	public Quarter(String name) {
-		this.setName(name);
-	}
-
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * Sets the name.
-	 *
-	 * @param name the new name
-	 */
-	public void setName(String name) {
 		this.name = name;
+		buildings = new ArrayList<Building>();
 	}
 
 	/**
-	 * Gets the buildings.
+	 * Instantiates a new quarter.
 	 *
-	 * @return the buildings
+	 * @param name the name
+	 * @param buildings the buildings
 	 */
-	public List<Building> getBuildings() {
-		return buildings;
-	}
-
-	/**
-	 * Sets the buildings.
-	 *
-	 * @param buildings the new buildings
-	 */
-	public void setBuildings(List<Building> buildings) {
+	public Quarter(String name, List<Building> buildings) {
+		this.name = name;
 		this.buildings = buildings;
 	}
 
